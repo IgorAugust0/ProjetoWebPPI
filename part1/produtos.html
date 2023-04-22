@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | H&I</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+
+<body>
+    <!---------- Header ----------------->
+    <div class="grupo">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html" aria-label="Logo"><img src="images/logo.png" width="125px" alt="logo"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <!-- <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li> -->
+                    <li><a href="conta.html">Conta</a></li>
+                    <li>
+                        <a href="carrinho.html"><img src="images/carrinho.png" width="30px" height="30px"
+                                alt="carrinho"></a>
+                        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="menu">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-------- Todos Produtos -------->
+    <div class="small-grupo">
+        <div class="linha linha-2">
+            <h2>Todos Produtos</h2>
+            <select aria-label="label para select">
+                <option>Relevante</option>
+                <option>Ordernar por Preço</option>
+                <option>Ordernar por Popularidade</option>
+                <option>Ordernar por Avaliação</option>
+                <option>Ordernar por Ofertas</option>
+            </select>
+        </div>
+
+
+        <div class="linha">
+            <div class="coluna-4">
+                <a href="produto.html"><img src="images/ps5.png" alt="product-1"></a>
+                <a href="produto.html">
+                    <h4>Sony Playstation 5</h4>
+                </a>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$4200,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/patek.png" alt="rolex">
+                <h4>Relógio Patek Philippe 7300/1200A - TWENTY~4</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$100.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/rtx.png" alt="rtx">
+                <h4>NVIDIA RTX 4080</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$8599,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/14pro.png" alt="14pro">
+                <h4>Apple Iphone 14 Pro Max</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$7599,00</p>
+            </div>
+        </div>
+
+        <div class="linha">
+            <div class="coluna-4">
+                <img src="images/bike.png" alt="bike">
+                <h4>Cannondale Scalpel HI-MOD</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$8.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/airforceone.png" alt="airforceone">
+                <h4>Nike Air Force One</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$1.200,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/i9.png" alt="i9">
+                <h4>Processador Intel i9-13900KS</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$6.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/macpro.jpg" alt="macpro">
+                <h4>Apple MacPro</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$70.000,00</p>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="coluna-4">
+                <img src="images/h2r.png" alt="h2r">
+                <h4>Kawasaki Ninja H2R</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$350.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/panela.png" alt="panela">
+                <h4>Conjunto de Panelas Tramontina</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$150,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/xsx.png" alt="xbox ">
+                <h4>Xbox Series X</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$4.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/banana.png" alt="product-12">
+                <h4>Banana (nova versão)</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$849,00</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!---- Rodapé ------>
+    <div class="rodape">
+        <div class="grupo">
+            <div class="linha">
+                <div class="rodape-coluna-1">
+                    <h3>Baixe nosso App</h3>
+                    <p>Disponível tanto para Android quanto para iOS</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png" alt="play-store">
+                        <img src="images/app-store.png" alt="app-store">
+                    </div>
+                </div>
+                <div class="rodape-coluna-2">
+                    <img src="images/logo-white.png" alt="logo-white">
+                    <p>Nosso propósito é oferecer a melhor experência possível a um preço justo para nossos fiés
+                        clientes </p>
+                </div>
+                <div class="rodape-coluna-3">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Nosso blog</li>
+                        <li>Política de devolução</li>
+                        <li>Seja um afiliado</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
+        </div>
+    </div>
+    <!----------- script para ativar menu em mobile (em formato burguer) ------->
+    <script>
+        var MenuItems = document.getElementById("MenuItems")
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+</body>
+
+</html>

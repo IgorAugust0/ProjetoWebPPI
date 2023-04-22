@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes | H&I</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+
+<body>
+    <!---------- Header ----------------->
+    <div class="grupo">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html" aria-label="Logo"><img src="images/logo.png" width="125px" alt="logo"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <!-- <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li> -->
+                    <li><a href="conta.html">Conta</a></li>
+                    <li>
+                        <a href="carrinho.html"><img src="images/carrinho.png" width="30px" height="30px"
+                                alt="carrinho"></a>
+                        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="menu">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-------- Detalhes de único produto -------->
+
+    <div class="small-grupo unico-produto">
+        <div class="linha">
+            <div class="coluna-2">
+                <img src="images/ps5.png" width="100%" id="product-img" alt="gallery-1">
+
+                <div class="small-img-linha">
+                    <div class="small-img-coluna">
+                        <img src="images/ps5_1.png" class="small-img" alt="gallery-2">
+                    </div>
+                    <div class="small-img-coluna">
+                        <img src="images/ps5_2.png" class="small-img" alt="gallery-3">
+                    </div>
+                    <div class="small-img-coluna">
+                        <img src="images/ps5_3.png" class="small-img" alt="gallery-4">
+                    </div>
+                    <div class="small-img-coluna">
+                        <img src="images/ps5_4.png" class="small-img" alt="gallery-5">
+                    </div>
+                </div>
+            </div>
+            <div class="coluna-2">
+                <p>Home / Consoles</p>
+                <h1>Playstation 5</h1>
+                <h4>R$4200,00</h4>
+                <select aria-label="label para select">
+                    <option>Selecione uma edição</option>
+                    <option>Digital</option>
+                    <option>Físico</option>
+                </select>
+                <input type="number" value="1">
+                <a href="carrinho.html" class="btn">Comprar</a>
+                <h3>Descrição <i class="fa fa-indent"></i></h3>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde molestiae, eaque nemo reprehenderit eos
+                    et perferendis ad enim nisi fugiat sapiente magni voluptate nobis.</p>
+
+            </div>
+        </div>
+    </div>
+    <!-- ----------Título---------- -->
+    <div class="small-grupo">
+        <div class="linha linha-2">
+            <h2>Produtos relacionados</h2>
+            <p style="float: right;">Ver mais</p>
+        </div>
+    </div>
+    <div class="small-grupo">
+        <div class="linha">
+            <div class="coluna-4">
+                <img src="images/bike.png" alt="bike">
+                <h4>Cannondale Scalpel HI-MOD</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$8.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/airforceone.png" alt="airforceone">
+                <h4>Nike Airforce One</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$1.200,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/i9.png" alt="i9">
+                <h4>Processador Intel i9-13900KS</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$6.000,00</p>
+            </div>
+            <div class="coluna-4">
+                <img src="images/macpro.jpg" alt="macpro">
+                <h4>Apple MacPro</h4>
+                <div class="avaliacao">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$70.000,00</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!---- Rodape ------>
+    <div class="rodape">
+        <div class="grupo">
+            <div class="linha">
+                <div class="rodape-coluna-1">
+                    <h3>Baixe nosso App</h3>
+                    <p>Disponível tanto para Android quanto para iOS</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png" alt="play-store">
+                        <img src="images/app-store.png" alt="app-store">
+                    </div>
+                </div>
+                <div class="rodape-coluna-2">
+                    <img src="images/logo-white.png" alt="logo-white">
+                    <p>Nosso propósito é oferecer a melhor experência possível a um preço justo para nossos fiés
+                        clientes </p>
+                </div>
+                <div class="rodape-coluna-3">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Nosso blog</li>
+                        <li>Política de devolução</li>
+                        <li>Seja um afiliado</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
+        </div>
+    </div>
+    <!----------- script para ativar menu em mobile (em formato burguer) ------->
+    <script>
+        var MenuItems = document.getElementById("MenuItems")
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+
+    <!----------- script para galeria de fotos do produto ------->
+
+    <script>
+        var productImg = document.getElementById("product-img");
+        var SmallImg = document.getElementsByClassName("small-img");
+
+        SmallImg[0].onclick = function () {
+            productImg.src = SmallImg[0].src;
+        }
+        SmallImg[1].onclick = function () {
+            productImg.src = SmallImg[1].src;
+        }
+        SmallImg[2].onclick = function () {
+            productImg.src = SmallImg[2].src;
+        }
+        SmallImg[3].onclick = function () {
+            productImg.src = SmallImg[3].src;
+        }
+    </script>
+</body>
+
+</html>
