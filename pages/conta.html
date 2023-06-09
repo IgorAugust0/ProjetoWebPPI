@@ -17,7 +17,8 @@
     <div class="grupo">
         <div class="navbar">
             <div class="logo">
-                <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="125px" alt="logo"></a>
+                <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="125px"
+                        alt="logo"></a>
             </div>
             <nav>
                 <ul id="MenuItems">
@@ -28,7 +29,7 @@
                     <li><a href="conta.html">Conta</a></li>
                     <li>
                         <a href="carrinho.html"><img src="../assets/images/carrinho.png" width="30px" height="30px"
-                                                     alt="carrinho"></a>
+                                alt="carrinho"></a>
                         <img src="../assets/images/menu.png" class="menu-icon" onclick="menutoggle()" alt="menu">
                     </li>
                 </ul>
@@ -51,19 +52,19 @@
                             <span onclick="cadastrar()">Cadastrar</span>
                             <hr id="indicador">
                         </div>
-                        <form id="formEntrar">
-                            <input type="text" placeholder="Usuário">
-                            <input type="password" placeholder="Senha">
+                        <form id="formEntrar" action="../php/login.php" method="post">
+                            <input type="text" id="email" name="email" placeholder="Email">
+                            <input type="password" id="senha" name="senha" placeholder="Senha">
                             <button type="submit" class="btn">Entrar</button>
                             <a href="">Esqueceu a senha?</a>
                         </form>
-
-                        <form id="formCadastrar">
-                            <input type="text" placeholder="Usuário">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Senha">
+                        <form id="formCadastrar" action="../php/cadastro.php" method="post">
+                            <input type="text" id="nome" name="nome" placeholder="Nome">
+                            <input type="text" id="cpf" name="cpf" placeholder="CPF">
+                            <input type="email" id="email_cadastro" name="email_cadastro" placeholder="Email">
+                            <input type="tel" id="telefone" name="telefone" placeholder="Telefone">
+                            <input type="password" id="senha_cadastro" name="senha_cadastro" placeholder="Senha">
                             <button type="submit" class="btn">Cadastrar</button>
-
                         </form>
                     </div>
                 </div>
@@ -119,20 +120,20 @@
 
     <!-- -------- script para ativar formulário ------ -->
     <script>
-        var formEntrar = document.getElementById("formEntrar");
-        var formCadastrar = document.getElementById("formCadastrar");
-        var indicador = document.getElementById("indicador");
+        const formEntrar = document.querySelector("#formEntrar");
+        const formCadastrar = document.querySelector("#formCadastrar");
+        const indicador = document.querySelector("#indicador");
 
         function cadastrar() {
-            formCadastrar.style.transform = "translateX(0px)";
-            formEntrar.style.transform = "translateX(0px)";
-            indicador.style.transform = "translateX(100px)";
+            formCadastrar.style.transform = `translateX(0px)`;
+            formEntrar.style.transform = `translateX(0px)`;
+            indicador.style.transform = `translateX(100px)`;
         }
 
         function entrar() {
-            formCadastrar.style.transform = "translateX(300px)";
-            formEntrar.style.transform = "translateX(300px)";
-            indicador.style.transform = "translateX(0px)";
+            formCadastrar.style.transform = `translateX(300px)`;
+            formEntrar.style.transform = `translateX(300px)`;
+            indicador.style.transform = `translateX(0px)`;
         }
     </script>
 
