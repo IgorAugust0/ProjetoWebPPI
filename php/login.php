@@ -34,6 +34,6 @@ if (checkLogin($pdo, $email, $senha)) {
     header("location: area_anunciante.php");
 }
 else {
-    header("location: ../pages/login.html");
+    header("location: ../pages/conta.html#formEntrar");
 }
 ?>
