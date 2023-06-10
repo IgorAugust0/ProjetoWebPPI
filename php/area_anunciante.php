@@ -5,10 +5,10 @@ if (!isset($_SESSION['email']))
     header("location: ../pages/conta.html");
 
 //Fazer logout
-if (isset($_GET['sair'])) {
-    unset($_SESSION['email']);
-    header("location: ../pages/conta.html");
-}
+// if (isset($_GET['sair'])) {
+//     unset($_SESSION['email']);
+//     header("location: ../pages/conta.html");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,8 @@ if (isset($_GET['sair'])) {
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                     <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                    <li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>
+                    <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                    <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
                 </ul>
             </div>
 
@@ -59,7 +60,8 @@ if (isset($_GET['sair'])) {
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                 <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                <li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>
+                <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
             </ul>
         </div>
     </header>

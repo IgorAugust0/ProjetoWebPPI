@@ -24,6 +24,7 @@ try {
   if (!$stmt->execute([$nome, $cpf, $email, $hashsenha, $telefone])) {
     throw new PDOException('Erro ao cadastrar anunciante');
   }
+  $id_anunciante = $conn->lastInsertId();
 
   // Confirmar a transação
   $conn->commit();
