@@ -17,18 +17,16 @@ if (isset($_GET['sair'])) {
 
 try {
 
-  $sql = <<<SQL
+    $sql = <<<SQL
   SELECT nome,cpf,hash_senha,telefone
   FROM anunciante
   WHERE anunciante.email = '$email'
   SQL;
 
-  $stmt = $pdo->query($sql);
-
-} 
-catch (Exception $e) {
-  //error_log($e->getMessage(), 3, 'log.php');
-  exit('Ocorreu uma falha: ' . $e->getMessage());
+    $stmt = $pdo->query($sql);
+} catch (Exception $e) {
+    //error_log($e->getMessage(), 3, 'log.php');
+    exit('Ocorreu uma falha: ' . $e->getMessage());
 }
 ?>
 
@@ -36,15 +34,15 @@ catch (Exception $e) {
 <html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8">
-  <!-- 1: Tag de responsividade -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meus Anúncios</title>
+    <meta charset="utf-8">
+    <!-- 1: Tag de responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meus Anúncios</title>
 
-  <!-- 2: Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- 2: Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-  <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -74,7 +72,7 @@ catch (Exception $e) {
             display: flexbox;
             overflow-x: hidden;
         }
-        
+
         button {
             margin-top: 1rem;
         }
@@ -218,7 +216,8 @@ catch (Exception $e) {
             .open {
                 display: block;
             }
-            .container{
+
+            .container {
                 width: 70vw;
                 overflow-x: hidden;
             }
@@ -266,7 +265,7 @@ catch (Exception $e) {
                 display: block;
             }
 
-            .container{
+            .container {
                 width: 70vw;
                 margin: 130px auto;
             }
@@ -313,7 +312,8 @@ catch (Exception $e) {
             .open {
                 display: block;
             }
-            .container{
+
+            .container {
                 width: 70vw;
                 overflow-x: hidden;
                 margin: 222px auto;
@@ -340,11 +340,26 @@ catch (Exception $e) {
                 padding: 10px;
             }
         }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-<header>
+    <header>
         <nav class="nav-bar">
             <div class="logo">
                 <a><img src="../images/logo3.png" alt="logo"></a>
@@ -363,10 +378,8 @@ catch (Exception $e) {
 
             <div class="move">
                 <button onclick="mostraMenu()" class="mobile-menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
-                        class="mobile-menu-icon">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="mobile-menu-icon">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
             </div>
@@ -390,69 +403,91 @@ catch (Exception $e) {
         <hr>
         <form action="formAltera.php" method="post">
             <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" name="nome" class="form-control" id="nome" required>
-                            </div>
+                <div class="col-sm-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" name="nome" class="form-control" id="nome" required>
+                </div>
 
-                            <div class="col-sm-6">
-                                <label class="form-label">CPF</label>
-                                <input type="text" name="cpf" class="form-control" id="cpf" required>
-                            </div>
+                <div class="col-sm-6">
+                    <label class="form-label">CPF</label>
+                    <input type="text" name="cpf" class="form-control" id="cpf" required>
+                </div>
 
-                            <div class="col-sm-6">
-                                <label class="form-label">Telefone</label>
-                                <input type="tel" name="telefone" class="form-control" id="telefone" required>
-                            </div>
-                            
-                            <div class="col-sm-6">
-                                <label class="form-label">Senha</label>
-                                <input name="senha" type="password" class="form-control" id="senha" required>
-                            </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Telefone</label>
+                    <input type="tel" name="telefone" class="form-control" id="telefone" required>
+                </div>
 
-                            <div class="col-12">
-                            <button type="submit" class="btn btn-secondary">Enviar</button>
-                            </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Senha</label>
+                    <input name="senha" type="password" class="form-control" id="senha" required>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary">Enviar</button>
+                </div>
             </div>
         </form>
         <hr>
         <h3>Meus Dados</h3>
         <hr>
 
-      <?php
-      while ($row = $stmt->fetch()) {
+        <?php
+        while ($row = $stmt->fetch()) {
 
-        $nome = $row['nome'];
-        $cpf= htmlspecialchars($row['cpf']);
-        $telefone = htmlspecialchars($row['telefone']);
-        $senha = htmlspecialchars($row['hash_senha']);
-        $email = $_SESSION['email'];
+            $nome = $row['nome'];
+            $cpf = htmlspecialchars($row['cpf']);
+            $telefone = htmlspecialchars($row['telefone']);
+            $senha = htmlspecialchars($row['hash_senha']);
+            $email = $_SESSION['email'];
 
-        echo <<<HTML
-            <strong>Nome: </strong><p>$nome</p>
-            <strong>CPF: </strong><p>$cpf</p>
-            <strong>Telefone: </strong><p>$telefone</p> 
-            <strong>Email: </strong><p>$email</p>
-            <strong>Senha: </strong><p>$senha</p>     
-        HTML;
-      }
-      ?>
+            echo <<<HTML
+    <strong>Nome: </strong><p>$nome</p>
+    <strong>CPF: </strong><p>$cpf</p>
+    <strong>Telefone: </strong><p>$telefone</p> 
+    <strong>Email: </strong><p>$email</p>
+    <strong>Senha: </strong>
+    <div class="password-wrapper">
+      <input type="password" value="$senha" readonly>
+      <button type="button" class="password-toggle" onclick="togglePasswordVisibility()">Mostrar</button>
+    </div>
+  HTML;
+        }
+        ?>
     </div>
 
-   <footer>
+    <footer>
         <img src="../images/icones.png" alt="Icones" width="150" height="50">
     </footer>
 
-  <script>
-    function mostraMenu() {
-    let menuMobile = document.querySelector('.mobile-menu');
-    if (menuMobile.classList.contains('open')) {
-        menuMobile.classList.remove('open');
-    } else {
-        menuMobile.classList.add('open');
-    }
-}
-  </script>
+    <script>
+        // script para mostrar/esconder o menu mobile
+        function mostraMenu() {
+            let menuMobile = document.querySelector('.mobile-menu');
+            if (menuMobile.classList.contains('open')) {
+                menuMobile.classList.remove('open');
+            } else {
+                menuMobile.classList.add('open');
+            }
+        }
+    </script>
+
+    
+    <script>
+        // script para mostrar/esconder a senha
+        function togglePasswordVisibility() {
+            const passwordInput = document.querySelector(".password-wrapper input");
+            const passwordToggle = document.querySelector(".password-wrapper .password-toggle");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.textContent = "Esconder";
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.textContent = "Mostrar";
+            }
+        }
+    </script>
 
 </body>
 

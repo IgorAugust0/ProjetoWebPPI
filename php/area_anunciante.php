@@ -2,12 +2,12 @@
 session_start();
 
 if (!isset($_SESSION['email']))
-    header("location: ../pages/login.html");
+    header("location: ../pages/conta.html");
 
 //Fazer logout
 if (isset($_GET['sair'])) {
     unset($_SESSION['email']);
-    header("location: ../pages/login.html");
+    header("location: ../pages/conta.html");
 }
 
 ?>
