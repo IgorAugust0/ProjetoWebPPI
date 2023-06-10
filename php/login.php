@@ -17,7 +17,8 @@ function checkLogin($pdo, $email, $senha)
     if (!$row) return false;
 
     return password_verify($senha, $row['hash_senha']);
-  } catch (Exception $e) {
+  } 
+  catch (Exception $e) {
     exit('Falha inesperada: ' . $e->getMessage());
   }
 }
@@ -29,8 +30,10 @@ $email = $_POST["email"] ?? "";
 $senha = $_POST["senha"] ?? "";
 
 if (checkLogin($pdo, $email, $senha)) {
-  $_SESSION['email'] = $_POST['email'];
-  header("location: area_anunciante.php");
-} else {
-  header("location: ../pages/login.html");
+    $_SESSION['email'] = $_POST['email'];
+    header("location: area_anunciante.php");
 }
+else {
+    header("location: ../pages/login.html");
+}
+?>
