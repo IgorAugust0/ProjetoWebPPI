@@ -14,5 +14,3 @@ setcookie(session_name(), "", 1, "/");
 
 header("location: ../pages/conta.html");
 exit();
-
-?>

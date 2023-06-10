@@ -1,39 +1,33 @@
 <?php
-
-session_start();
-
-function checkLogin($pdo, $email, $senha)
-{
-  $sql = <<<SQL
-    SELECT hash_senha
-    FROM anunciante
-    WHERE email = ?
-    SQL;
-
-  try {
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$email]);
-    $row = $stmt->fetch();
-    if (!$row) return false;
-
-    return password_verify($senha, $row['hash_senha']);
-  } 
-  catch (Exception $e) {
-    exit('Falha inesperada: ' . $e->getMessage());
-  }
-}
-
 require "conexaoMysql.php";
-$pdo = mysqlConnect();
 
-$email = $_POST["email"] ?? "";
-$senha = $_POST["senha"] ?? "";
+$email = $_POST["email"] ?? '';
+$senha = $_POST["senha"] ?? '';
 
-if (checkLogin($pdo, $email, $senha)) {
-    $_SESSION['email'] = $_POST['email'];
-    header("location: area_anunciante.php");
+try {
+  $conn = mysqlConnect();
+  $stmt = $conn->prepare("SELECT hash_senha FROM anunciante WHERE email = ?");
+  $stmt->execute([$email]);
+  $senhaHash = $stmt->fetchColumn();
+
+  if (!$senhaHash || !password_verify($senha, $senhaHash)) {
+    $response = ['success' => false, 'detail' => '../pages/conta.html#formEntrar'];
+  } else {
+    session_start();
+    $_SESSION['loggedIn'] = true;
+    $_SESSION['user'] = $email;
+    $response = ['success' => true, 'detail' => 'area_anunciante.php'];
+  }
+
+  header('Content-Type: application/json');
+  echo json_encode($response);
+
+  if ($response['success']) {
+    header("Location: " . $response['detail']);
+  } else {
+    header("Location: " . $response['detail']);
+  }
+  exit();
+} catch (PDOException $e) {
+  exit('Falha inesperada: ' . $e->getMessage());
 }
-else {
-    header("location: ../pages/conta.html#formEntrar");
-}
-?>

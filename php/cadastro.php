@@ -9,7 +9,7 @@ try {
   $email = $_POST["email"] ?? "";
   $senha = $_POST["senha"] ?? "";
   $telefone = $_POST["telefone"] ?? "";
-  
+
   $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
   $sql = <<<SQL
@@ -41,15 +41,6 @@ try {
   } else {
     exit('Falha ao cadastrar os dados: ' . $errorMessage);
   }
-// } catch (PDOException $e) {
-//   // Caso ocorra algum erro, desfazer a transação
-//   $conn->rollBack();
-//   $errorInfo = $e->errorInfo ?? null;
-//   if ($errorInfo !== null && $errorInfo[1] === 1062) {
-//       exit('Dados duplicados: ' . ($errorInfo[2] ?? ''));
-//   } else {
-//       exit('Falha ao cadastrar os dados: ' . $e->getMessage());
-//   }
 } finally {
   // Fechando a conexão com o banco de dados
   if ($conn !== null) {
