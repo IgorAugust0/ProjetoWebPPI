@@ -2,7 +2,7 @@
 
 session_start();
 
-$email = $_SESSION['email'];
+$email = $_SESSION['user'];
 
 require "conexaoMysql.php";
 $pdo = mysqlConnect();

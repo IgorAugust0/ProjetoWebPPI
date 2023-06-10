@@ -5,6 +5,14 @@ require "conexaoMysql.php";
 $pdo = mysqlConnect();
 
 
+if (!isset($_SESSION['loggedIn'])) {
+    header("location: ../pages/conta.html");
+    exit();
+}
+
+$email = $_SESSION['user'];
+
+/*
 if (!isset($_SESSION['email']))
     header("location: ../html/login.html");
 
@@ -13,6 +21,7 @@ if (isset($_GET['sair'])) {
     unset($_SESSION['email']);
     header("location: ../html/login.html");
 }
+*/
 ?>
 
 <!DOCTYPE html>
@@ -337,7 +346,7 @@ if (isset($_GET['sair'])) {
                     <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                    <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
+                    <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
                 </ul>
@@ -357,7 +366,7 @@ if (isset($_GET['sair'])) {
                 <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
+                <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
             </ul>
@@ -424,7 +433,8 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="estado" class="form-label">Estado</label>
-                                <select name="estado" class="form-control" id="estado" required></select>
+                                <input type="text" name="estado" class="form-control" id="estado" required>
+                                <!--<select name="estado" class="form-control" id="estado" required></select>-->
                             </div>
 
                             <!-- Bairro e cidade -->
@@ -434,7 +444,8 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="cidade" class="form-label">Cidade</label>
-                                <select name="cidade" class="form-control" id="cidade" required></select>
+                                <input type="text" name="cidade" class="form-control" id="cidade" required>
+                                <!--<select name="cidade" class="form-control" id="cidade" required></select>-->
                             </div>
                         </div>
                     </fieldset>

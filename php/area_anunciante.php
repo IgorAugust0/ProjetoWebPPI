@@ -6,6 +6,9 @@ if (!isset($_SESSION['loggedIn'])) {
     header("location: ../pages/conta.html");
     exit();
 }
+
+$email = $_SESSION['user'];
+
 // if (!isset($_SESSION['email']))
 //     header("location: ../pages/conta.html");
 
@@ -23,7 +26,7 @@ if (!isset($_SESSION['loggedIn'])) {
     <meta charset="utf-8">
     <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/area_anunciante.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Área do Anunciate</title>
 
 </head>
@@ -40,7 +43,7 @@ if (!isset($_SESSION['loggedIn'])) {
                     <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                    <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
+                    <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                     <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
                     <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
@@ -61,7 +64,7 @@ if (!isset($_SESSION['loggedIn'])) {
                 <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
+                <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                 <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
                 <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
@@ -76,7 +79,7 @@ if (!isset($_SESSION['loggedIn'])) {
             <div>
                 <a href="cria_anuncio.php" class="opcoes">Criar Anúncio</a>
                 <a href="mostrar_anuncios.php" class="opcoes">Meus Anúncios</a>
-                <a href="mensagens.php" class="opcoes">Mensagens</a>
+                <!--<a href="mensagens.php" class="opcoes">Mensagens</a>-->
                 <a href="altera_dados.php" class="opcoes">Meus Dados</a>
             </div>
         </div>

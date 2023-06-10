@@ -19,7 +19,7 @@ $pdo = mysqlConnect();
   $estado = $_POST["estado"] ?? "";
   $bairro = $_POST["bairro"] ?? "";
   $cidade = $_POST["cidade"] ?? "";
-  $email = $_SESSION['email'];
+  $email = $_SESSION['user'];
   $fotos = array();
 
   if(isset($_FILES['foto'])){

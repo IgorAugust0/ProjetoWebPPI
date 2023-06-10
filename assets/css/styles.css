@@ -441,6 +441,38 @@ input:focus {
   cursor: pointer;
 }
 
+.item-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 2rem;
+}
+
+.item {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.item-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 2rem;
+}
+
+.item-name {
+  font: 2em Verdana;
+  color: #888;
+}
+
+.item-price {
+  font: 2em Verdana;
+  margin-left: 2rem;
+}
+
+.item-price::before {
+  content: 'R$ ';
+}
+
 /* -------- Carrinho --------- */
 
 .pag-carrinho {
