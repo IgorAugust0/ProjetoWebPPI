@@ -5,6 +5,12 @@ require "conexaoMysql.php";
 $pdo = mysqlConnect();
 
 
+if (!isset($_SESSION['loggedIn'])) {
+    header("location: ../pages/conta.html");
+    exit();
+}
+
+/*
 if (!isset($_SESSION['email']))
     header("location: ../html/login.html");
 
@@ -13,6 +19,7 @@ if (isset($_GET['sair'])) {
     unset($_SESSION['email']);
     header("location: ../html/login.html");
 }
+*/
 ?>
 
 <!DOCTYPE html>
