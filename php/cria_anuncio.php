@@ -24,8 +24,7 @@ if (isset($_GET['sair'])) {
     <title>Criar Anúncio</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <style>
         * {
@@ -295,10 +294,11 @@ if (isset($_GET['sair'])) {
             .open {
                 display: block;
             }
+
             .container {
-            margin-top: 300px;
-            margin-bottom: 300px;
-        }
+                margin-top: 300px;
+                margin-bottom: 300px;
+            }
         }
 
         /*Responsividade para Galaxy Fold*/
@@ -345,10 +345,8 @@ if (isset($_GET['sair'])) {
 
             <div class="move">
                 <button onclick="mostraMenu()" class="mobile-menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
-                        class="mobile-menu-icon">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="mobile-menu-icon">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
             </div>
@@ -385,7 +383,7 @@ if (isset($_GET['sair'])) {
                             <label class="form-label">Categoria</label>
                             <select name="categoria" class="form-select" id="categoria" required>
                                 <option value="" selected>Selecione</option>
-                                
+
                                 <?php
                                 $select = $pdo->prepare("SELECT nome, codigo FROM categoria ORDER BY nome ASC");
                                 $select->execute();
@@ -426,7 +424,7 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="estado" class="form-label">Estado</label>
-                                <input type="text" name="estado" class="form-control" id="estado" required>
+                                <select name="estado" class="form-control" id="estado" required></select>
                             </div>
 
                             <!-- Bairro e cidade -->
@@ -436,10 +434,11 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="cidade" class="form-label">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" id="cidade" required>
+                                <select name="cidade" class="form-control" id="cidade" required></select>
                             </div>
                         </div>
                     </fieldset>
+
 
                     <div class="col-12">
                         <button type="submit" class="btn btn-secondary">Publicar</button>
@@ -450,11 +449,47 @@ if (isset($_GET['sair'])) {
     <footer>
         <img src="../images/icones.png" alt="Icones" width="150" height="50">
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
+        async function fetchStates() {
+            try {
+                const response = await fetch('estados-cidades.json');
+                const data = await response.json();
+                const select = document.getElementById("estado");
 
-    <script src="../js/custom.js"></script>
+                // Populate the state options
+                for (const estado of data.estados) {
+                    const option = document.createElement("option");
+                    option.value = estado.sigla;
+                    option.text = estado.nome;
+                    select.add(option);
+                }
+
+                // Handle state change event
+                select.addEventListener("change", function() {
+                    const selectedState = this.value;
+                    const citySelect = document.getElementById("cidade");
+                    const estado = data.estados.find(e => e.sigla === selectedState);
+                    const cities = estado.cidades;
+
+                    // Clear previous city options
+                    citySelect.innerHTML = "";
+
+                    // Populate the city options for the selected state
+                    cities.forEach(city => {
+                        const option = document.createElement("option");
+                        option.value = city;
+                        option.text = city;
+                        citySelect.add(option);
+                    });
+                });
+            } catch (error) {
+                console.error('Error fetching state data:', error);
+            }
+        }
+
+        fetchStates();
+    </script>
 
 </body>
 
