@@ -16,6 +16,7 @@ try {
     session_start();
     $_SESSION['loggedIn'] = true;
     $_SESSION['user'] = $email;
+    setcookie('myCookie', 'cookieValue', time() + 28800); // Cookie expira em 8 horas
     $response = ['success' => true, 'detail' => 'area_anunciante.php'];
   }
 
