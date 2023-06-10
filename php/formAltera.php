@@ -5,12 +5,12 @@ session_start();
 $email = $_SESSION['user'];
 
 require "conexaoMysql.php";
-$pdo = mysqlConnect();
+$conn = mysqlConnect();
 
 $nome = $_POST["nome"] ?? "";
 $cpf = $_POST["cpf"] ?? "";
 $senha = $_POST["senha"] ?? "";
-$telefone= $_POST["telefone"] ?? "";
+$telefone = $_POST["telefone"] ?? "";
 
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -26,19 +26,26 @@ try {
   WHERE email = '$email'
   SQL;
 
-  $stmt = $pdo->prepare($sql);
+  $stmt = $conn->prepare($sql);
   $stmt->execute([
     $nome, $cpf, $telefone, $hashsenha
   ]);
 
   header("location: altera_dados.php");
   exit();
-} 
-catch (Exception $e) {  
-  //error_log($e->getMessage(), 3, 'log.php');
-  if ($e->errorInfo[1] === 1062)
-    exit('Dados duplicados: ' . $e->getMessage());
-  else
-    exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+} catch (Exception $e) {
+  // Caso ocorra algum erro, desfazer a transação
+  $conn->rollBack();
+  $errorCode = $e->getCode();
+  $errorMessage = $e->getMessage();
+  if ($errorCode === 1062) {
+    exit('Dados duplicados: ' . $errorMessage);
+  } else {
+    exit('Falha ao cadastrar os dados: ' . $errorMessage);
+  }
+} finally {
+  // Fechando a conexão com o banco de dados
+  if ($conn !== null) {
+    $conn = null;
+  }
 }
-?>
