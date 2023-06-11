@@ -52,7 +52,6 @@
             <span class="item-price">{{prod-price}}</span>
           </div>
         </template>
-    
     </section>
 
 
@@ -117,22 +116,23 @@
         // funcao para buscar todos os produtos de acordo com a categoria selecionada
 
         function renderProducts(newProducts) {
-
             const prodsSection = document.getElementById("products");
             const template = document.getElementById("template");
 
+            // Remove os produtos antigos
             while (prodsSection.children.length > 1) {
-                prodsSection.removeChild(prodsSection.firstChild);
+                prodsSection.removeChild(prodsSection.lastChild);
             }
 
+            // Adiciona os novos produtos
             for (let product of newProducts) {
-            let html = template.innerHTML
-                .replace("{{prod-image}}", product.imagePath)
-                .replace("{{prod-name}}", product.name)
-                .replace("{{prod-price}}", product.price);
+                let productElement = template.content.cloneNode(true);
+                productElement.querySelector(".item-image").src = "../assets/images/" + product.imagePath;
+                productElement.querySelector(".item-name").textContent = product.name;
+                productElement.querySelector(".item-price").textContent = product.price;
 
-            prodsSection.insertAdjacentHTML("beforeend", html);
-            };
+                prodsSection.appendChild(productElement);
+            }
         }
 
         async function loadProducts() {
