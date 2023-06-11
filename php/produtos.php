@@ -28,9 +28,11 @@ class Product
 }
 
 $sql = <<<SQL
-    SELECT titulo, preco, dataHora, codCategoria, nomeArqFoto
+    SELECT anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, foto.nomeArqFoto
     FROM anuncio
-    INNER JOIN foto ON anuncio.codigo = foto.codAnuncio
+    INNER JOIN (
+        SELECT anuncio.codigo
+        FROM anuncio
 SQL;
 
 if (!empty($codigoCategoria)) {
@@ -46,8 +48,9 @@ if (!empty($nome)) {
     $sql .= " anuncio.titulo LIKE '%$nome%'";
 }
 
-$sql .= " ORDER BY anuncio.dataHora DESC"; // Ordenar em ordem decrescente da data do anúncio
-$sql .= " LIMIT $itemsPerPage OFFSET $offset"; // Aplicar LIMIT e OFFSET para a paginação
+$sql .= " ORDER BY anuncio.dataHora DESC";
+$sql .= " LIMIT $offset, $itemsPerPage) AS anuncios_paginados ON anuncio.codigo = anuncios_paginados.codigo";
+$sql .= " INNER JOIN foto ON anuncio.codigo = foto.codAnuncio";
 
 try {
     $stmt = $pdo->prepare($sql);

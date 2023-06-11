@@ -17,7 +17,8 @@
     <div class="grupo">
         <div class="navbar">
             <div class="logo">
-                <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="125px" alt="logo"></a>
+                <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="125px"
+                        alt="logo"></a>
             </div>
             <nav>
                 <ul id="MenuItems">
@@ -40,7 +41,7 @@
         <div class="coluna-1">
             <h2>Todos Produtos</h2>
             <select aria-label="label para select" id="categoria">
-                
+
             </select>
         </div>
         <div class="coluna-2">
@@ -51,11 +52,11 @@
 
     <section id="products" class="small-grupo">
         <template id="template">
-          <div class="item">
-            <img class="item-image" src="../assets/images/{{prod-image}}"></img>
-            <span class="item-name">{{prod-name}}</span>
-            <span class="item-price">{{prod-price}}</span>
-          </div>
+            <div class="item">
+                <img class="item-image" src="../assets/images/{{prod-image}}"></img>
+                <span class="item-name">{{prod-name}}</span>
+                <span class="item-price">{{prod-price}}</span>
+            </div>
         </template>
     </section>
 
@@ -155,7 +156,7 @@
             }
             catch (e) {
                 console.error(e);
-            return;
+                return;
             }
 
             renderProducts(products);
@@ -190,14 +191,56 @@
 
         var selectCategoria = document.getElementById('categoria');
         selectCategoria.addEventListener('change', loadProducts);
-        
+
 
         window.onload = function () {
             buscarCategorias();
             loadProducts();
         };
 
-        
+        window.onscroll = function () {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                loadProductsInfinity();
+            }
+        };
+
+        let offset = 0; // Variável para controlar a quantidade de anúncios já carregados
+
+        async function loadProductsInfinity() {
+            try {
+                var selectCategoria = document.getElementById('categoria');
+                var codCategoria = selectCategoria.value;
+
+                // Adicione a variável "page" para indicar a página atual
+                var page = Math.ceil((document.getElementById("products").children.length - 1) / 6) + 1;
+
+                let response = await fetch(`../php/produtos.php?codCategoria=${codCategoria}&page=${page}`);
+                if (!response.ok) throw new Error(response.statusText);
+                var products = await response.json();
+
+                renderProductsInfinity(products);
+            } catch (e) {
+                console.error(e);
+                return;
+            }
+        }
+
+
+        function renderProductsInfinity(newProducts) {
+            const prodsSection = document.getElementById("products");
+            const template = document.getElementById("template");
+
+            // Adiciona os novos produtos
+            for (let product of newProducts) {
+                let productElement = template.content.cloneNode(true);
+                productElement.querySelector(".item-image").src = "../assets/images/" + product.imagePath;
+                productElement.querySelector(".item-name").textContent = product.name;
+                productElement.querySelector(".item-price").textContent = product.price;
+
+                prodsSection.appendChild(productElement);
+            }
+        }
+
     </script>
 </body>
 
