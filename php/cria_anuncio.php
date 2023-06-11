@@ -33,7 +33,7 @@ if (isset($_GET['sair'])) {
     <title>Criar Anúncio</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <style>
         * {
@@ -466,7 +466,7 @@ if (isset($_GET['sair'])) {
     <script>
         async function fetchStates() {
             try {
-                const response = await fetch('../js/estados-cidades.json');
+                const response = await fetch('../assets/js/estados-cidades.json');
                 const data = await response.json();
                 const select = document.getElementById("estado");
 

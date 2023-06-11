@@ -26,7 +26,7 @@ $email = $_SESSION['user'];
     <meta charset="utf-8">
     <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/area_anunciante.css">
     <title>Área do Anunciate</title>
 
 </head>
