@@ -43,12 +43,10 @@
                 
             </select>
         </div>
-        <!--
         <div class="coluna-2">
-            <h2>Busca por nome</h2>
-            <input type="text" id="anuncio" placeholder="Digite o nome do anúncio">
+            <input type="text" id="inputNomeAnuncio" placeholder="Digite o nome do anúncio">
+            <button id="btnBuscarAnuncio">Buscar</button>
         </div>
-        -->
     </div>
 
     <section id="products" class="small-grupo">
@@ -164,14 +162,28 @@
         }
 
         // funcao para buscar o produto pelo nome
-        function buscarAnuncioPorNome(nomeAnuncio) {
-            return fetch('../php/buscar_anuncio.php?nome=' + encodeURIComponent(nomeAnuncio))
-                .then(response => response.json())
-                .catch(error => {
-                    console.error(error);
-                    return { success: false };
-                });
+        async function buscarAnuncioPorNome() {
+            try {
+                var selecNomeProd = document.getElementById('inputNomeAnuncio');
+                // Obtém o valor selecionado do select da categoria
+                var nomeProd = selecNomeProd.value;
+                // Verifica se um valor de categoria foi selecionado
+
+                let response = await fetch('../php/produtos.php?nome=' + nomeProd);
+                if (!response.ok) throw new Error(response.statusText);
+                var products = await response.json();
+            }
+            catch (e) {
+                console.error(e);
+                return;
+            }
+
+            renderProducts(products);
         }
+
+        // Adicione um evento de clique ao botão de busca
+        const btnBuscarAnuncio = document.getElementById("btnBuscarAnuncio");
+        btnBuscarAnuncio.addEventListener("click", buscarAnuncioPorNome);
 
 
         // funcao para que a cada vez que mudar a categoria selecionada, os produtos atuais sejam exluídos e os novos sejam carregados
