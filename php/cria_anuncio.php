@@ -433,8 +433,8 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="estado" class="form-label">Estado</label>
-                                <input type="text" name="estado" class="form-control" id="estado" required>
-                                <!--<select name="estado" class="form-control" id="estado" required></select>-->
+                                <!-- <input type="text" name="estado" class="form-control" id="estado" required> -->
+                                <select name="estado" class="form-control" id="estado" required></select>
                             </div>
 
                             <!-- Bairro e cidade -->
@@ -444,8 +444,8 @@ if (isset($_GET['sair'])) {
                             </div>
                             <div class="col-sm-6">
                                 <label for="cidade" class="form-label">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" id="cidade" required>
-                                <!--<select name="cidade" class="form-control" id="cidade" required></select>-->
+                                <!-- <input type="text" name="cidade" class="form-control" id="cidade" required> -->
+                                <select name="cidade" class="form-control" id="cidade" required></select>
                             </div>
                         </div>
                     </fieldset>
@@ -464,7 +464,7 @@ if (isset($_GET['sair'])) {
     <script>
         async function fetchStates() {
             try {
-                const response = await fetch('estados-cidades.json');
+                const response = await fetch('../js/estados-cidades.json');
                 const data = await response.json();
                 const select = document.getElementById("estado");
 
