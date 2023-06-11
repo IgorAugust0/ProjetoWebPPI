@@ -348,7 +348,8 @@ if (isset($_GET['sair'])) {
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                     <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                    <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
+                    <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                    <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
                 </ul>
             </div>
 
@@ -368,7 +369,8 @@ if (isset($_GET['sair'])) {
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                 <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
+                <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
             </ul>
         </div>
     </header>
@@ -468,7 +470,7 @@ if (isset($_GET['sair'])) {
                 const data = await response.json();
                 const select = document.getElementById("estado");
 
-                // Populate the state options
+                // Popula as opções de estado
                 for (const estado of data.estados) {
                     const option = document.createElement("option");
                     option.value = estado.sigla;
@@ -476,17 +478,17 @@ if (isset($_GET['sair'])) {
                     select.add(option);
                 }
 
-                // Handle state change event
+                // Manipula o evento de mudança de estado
                 select.addEventListener("change", function() {
                     const selectedState = this.value;
                     const citySelect = document.getElementById("cidade");
                     const estado = data.estados.find(e => e.sigla === selectedState);
                     const cities = estado.cidades;
 
-                    // Clear previous city options
+                    // Limpa as opções de cidade anteriores
                     citySelect.innerHTML = "";
 
-                    // Populate the city options for the selected state
+                    // Popula as opções de cidade para o estado selecionado
                     cities.forEach(city => {
                         const option = document.createElement("option");
                         option.value = city;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$email = $_SESSION['email'];
+$email = $_SESSION['user'];
 
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
@@ -379,7 +379,8 @@ try {
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                     <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                    <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
+                    <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                    <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
                 </ul>
             </div>
 
@@ -399,7 +400,8 @@ try {
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                 <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
-                <li class="nav-item"><a href="cria_anuncio.php?sair=true" class="nav-link"> Sair</a></li>
+                <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
+                <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
             </ul>
         </div>
     </header>
@@ -427,7 +429,7 @@ try {
 
                 <div class="col-sm-6">
                     <label class="form-label">Senha</label>
-                    <input name="senha" type="password" class="form-control" id="senha" required>
+                    <input type="password" name="senha"  class="form-control" id="senha" required>
                 </div>
 
                 <div class="col-12">
@@ -446,7 +448,7 @@ try {
             $cpf = htmlspecialchars($row['cpf']);
             $telefone = htmlspecialchars($row['telefone']);
             $senha = htmlspecialchars($row['hash_senha']);
-            $email = $_SESSION['email'];
+            $email = $_SESSION['user'];
 
             echo <<<HTML
     <strong>Nome: </strong><p>$nome</p>
