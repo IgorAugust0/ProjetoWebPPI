@@ -17,17 +17,10 @@ try {
     $_SESSION['loggedIn'] = true;
     $_SESSION['user'] = $email;
     setcookie('myCookie', 'cookieValue', time() + 28800); // Cookie expira em 8 horas
-    $response = ['success' => true, 'detail' => 'area_anunciante.php'];
+    $response = ['success' => true, 'detail' => '../php/area_anunciante.php'];
   }
 
-  header('Content-Type: application/json');
   echo json_encode($response);
-
-  if ($response['success']) {
-    header("Location: " . $response['detail']);
-  } else {
-    header("Location: " . $response['detail']);
-  }
   exit();
 } catch (PDOException $e) {
   exit('Falha inesperada: ' . $e->getMessage());

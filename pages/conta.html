@@ -53,18 +53,18 @@
                             <span onclick="cadastrar()">Cadastrar</span>
                             <hr id="indicador">
                         </div>
-                        <form id="formEntrar" action="../php/login.php" method="post">
+                        <form id="formEntrar">
                             <input type="text" id="email" name="email" placeholder="Email">
                             <input type="password" id="senha" name="senha" placeholder="Senha">
                             <button type="submit" class="btn">Entrar</button>
                             <a href="">Esqueceu a senha?</a>
                         </form>
                         <form id="formCadastrar" action="../php/cadastro.php" method="post">
-                            <input type="text" id="nome" name="nome" placeholder="Nome">
-                            <input type="text" id="cpf" name="cpf" placeholder="CPF">
-                            <input type="email" id="email" name="email" placeholder="Email">
-                            <input type="tel" id="telefone" name="telefone" placeholder="Telefone">
-                            <input type="password" id="senha" name="senha" placeholder="Senha">
+                            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                            <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
+                            <input type="password" id="senha" name="senha" placeholder="Senha" required>
                             <button type="submit" class="btn">Cadastrar</button>
                         </form>
                     </div>
@@ -159,17 +159,46 @@
         const formCadastrar = document.querySelector("#formCadastrar");
         const indicador = document.querySelector("#indicador");
 
+        function entrar() {
+            formCadastrar.style.transform = `translateX(300px)`;
+            formEntrar.style.transform = `translateX(300px)`;
+            indicador.style.transform = `translateX(0px)`;
+        }
+
         function cadastrar() {
             formCadastrar.style.transform = `translateX(0px)`;
             formEntrar.style.transform = `translateX(0px)`;
             indicador.style.transform = `translateX(100px)`;
         }
 
-        function entrar() {
-            formCadastrar.style.transform = `translateX(300px)`;
-            formEntrar.style.transform = `translateX(300px)`;
-            indicador.style.transform = `translateX(0px)`;
+        // funcao para fazer o login de forma assincrona usando fetch
+        async function login(form) {
+            try {
+                let response = await fetch("../php/login.php", { method: 'post', body: new FormData(form) });
+                if (!response.ok) throw new Error(response.statusText);
+                var result = await response.json();
+
+                if (result.success){
+                window.location = result.detail;
+                }
+                else {
+                form.senha.value = "";
+                form.senha.focus();
+                }
+            }
+            catch (e) {
+                console.error(e);
+            }
         }
+
+        window.onload = function () {
+            const form = document.forms.formEntrar;
+            form.onsubmit = function (e) {
+                login(form);
+                e.preventDefault();
+            }
+        }
+
     </script>
 
 
