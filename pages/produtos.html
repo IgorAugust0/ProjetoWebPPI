@@ -36,12 +36,19 @@
         </div>
     </div>
     <!-------- Todos Produtos -------->
-    <div class="small-grupo">
-        <div class="linha linha-2">
+    <div class="small-grupo linha">
+        <div class="coluna-1">
             <h2>Todos Produtos</h2>
             <select aria-label="label para select" id="categoria">
                 
             </select>
+        </div>
+        <!--
+        <div class="coluna-2">
+            <h2>Busca por nome</h2>
+            <input type="text" id="anuncio" placeholder="Digite o nome do anúncio">
+        </div>
+        -->
     </div>
 
     <section id="products" class="small-grupo">
@@ -155,6 +162,17 @@
 
             renderProducts(products);
         }
+
+        // funcao para buscar o produto pelo nome
+        function buscarAnuncioPorNome(nomeAnuncio) {
+            return fetch('../php/buscar_anuncio.php?nome=' + encodeURIComponent(nomeAnuncio))
+                .then(response => response.json())
+                .catch(error => {
+                    console.error(error);
+                    return { success: false };
+                });
+        }
+
 
         // funcao para que a cada vez que mudar a categoria selecionada, os produtos atuais sejam exluídos e os novos sejam carregados
 

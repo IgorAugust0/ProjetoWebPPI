@@ -460,12 +460,12 @@ input:focus {
 }
 
 .item-name {
-  font: 2em Verdana;
+  font: 1em Verdana;
   color: #888;
 }
 
 .item-price {
-  font: 2em Verdana;
+  font: 1em Verdana;
   margin-left: 2rem;
 }
 
