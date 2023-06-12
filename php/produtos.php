@@ -34,7 +34,7 @@ $sql = <<<SQL
     FROM anuncio
     INNER JOIN (
         SELECT anuncio.codigo
-        FROM anuncio
+        FROM anuncio)
 SQL;
 
 if (!empty($codigoCategoria)) {
@@ -65,4 +65,3 @@ try {
 } catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
-?>

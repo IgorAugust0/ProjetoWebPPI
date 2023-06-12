@@ -9,15 +9,6 @@ if (!isset($_SESSION['loggedIn'])) {
 
 $email = $_SESSION['user'];
 
-// if (!isset($_SESSION['email']))
-//     header("location: ../pages/conta.html");
-
-//Fazer logout
-// if (isset($_GET['sair'])) {
-//     unset($_SESSION['email']);
-//     header("location: ../pages/conta.html");
-// }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

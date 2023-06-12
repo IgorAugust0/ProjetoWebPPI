@@ -33,5 +33,3 @@ try {
 catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
-
-?>

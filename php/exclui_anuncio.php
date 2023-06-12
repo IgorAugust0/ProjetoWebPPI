@@ -16,7 +16,6 @@ try {
 
   header("location: mostrar_anuncios.php");
   exit();
-} 
-catch (Exception $e) {  
+} catch (Exception $e) {
   exit('Falha inesperada: ' . $e->getMessage());
 }

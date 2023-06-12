@@ -12,16 +12,6 @@ if (!isset($_SESSION['loggedIn'])) {
 
 $email = $_SESSION['user'];
 
-/*
-if (!isset($_SESSION['email']))
-    header("location: ../html/login.html");
-
-//Fazer logout
-if (isset($_GET['sair'])) {
-    unset($_SESSION['email']);
-    header("location: ../html/login.html");
-}
-*/
 ?>
 
 <!DOCTYPE html>
