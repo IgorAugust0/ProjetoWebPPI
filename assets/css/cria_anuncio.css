@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -11,7 +11,28 @@ body {
   margin: auto;
   background-color: f2f2f2;
   overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+fieldset {
+  padding: 1rem;
+  border: 0.5 solid gray;
+  background-color: #eee;
+}
+
+legend {
+  background-color: #23232e;
+  color: #fff;
+  padding: 3px 8px;
 }
 
 header {
@@ -61,50 +82,9 @@ header {
   font-weight: 400;
 }
 
-.titulo {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: #fff;
-  font-weight: 400;
-}
-
-main {
-  width: 100vw;
-  height: 60.1vh;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 10vh;
-}
-
-.container2 {
-  background-color: white;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px grey;
-}
-
-footer {
-  background-color: #23232e;
-  text-align: center;
-  margin: auto;
-  padding: 5px;
-  width: 100%;
-}
-
-p {
-  padding: 5px;
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
-  padding: 10px;
-}
-
-.opcoes:link {
+.opcoes:link,
+.opcoe:visited,
+.opcoe:active {
   text-align: center;
   color: #555;
   text-decoration: none;
@@ -116,6 +96,7 @@ h2 {
   line-height: 1.5;
   max-width: 600px;
   margin: 5px auto;
+  width: 80%;
 }
 
 .opcoes:hover {
@@ -274,10 +255,11 @@ ul {
   .logo h1 {
     font-size: 30px;
   }
+
   .logo img {
     width: 110px;
   }
-  .container2 {
+  .container {
     width: 80%;
   }
   .nav-bar {
@@ -320,12 +302,11 @@ ul {
   .logo h1 {
     font-size: 30px;
   }
+
   .logo img {
     width: 110px;
   }
-  .container2 {
-    width: 80%;
-  }
+
   .nav-bar {
     padding: 1.5rem;
   }
@@ -366,14 +347,17 @@ ul {
   .logo img {
     width: 70px;
   }
+
   .logo h1 {
     font-size: 18px;
   }
+
   .mobile-menu-icon {
     width: 32px;
     height: 32px;
     margin-top: 5px;
   }
+
   .nav-bar {
     padding: 10px;
   }
