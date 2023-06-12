@@ -21,11 +21,8 @@ class anuncio
 
 try {
 
-
-
   $sql = <<<SQL
-  -- Repare que a coluna Id foi omitida por ser auto_increment
-  SELECT codigo, titulo, preco, descricao, nomeArqFoto FROM anuncio,foto WHERE codigo = codAnuncio/***/
+  SELECT codigo, titulo, preco, descricao, nomeArqFoto FROM anuncio,foto WHERE codigo = codAnuncio
   SQL;
 
     $stmt = $pdo->prepare($sql);

@@ -10,7 +10,7 @@ $conn = mysqlConnect();
 $nome = $_POST["nome"] ?? "";
 $cpf = $_POST["cpf"] ?? "";
 $senha = $_POST["senha"] ?? "";
-$telefone= $_POST["telefone"] ?? "";
+$telefone = $_POST["telefone"] ?? "";
 
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 

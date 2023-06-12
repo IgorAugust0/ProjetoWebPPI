@@ -11,17 +11,6 @@ if (!isset($_SESSION['loggedIn'])) {
     exit();
 }
 
-/*
-if (!isset($_SESSION['email']))
-    header("location: ../html/login.html");
-
-//Fazer logout
-if (isset($_GET['sair'])) {
-    unset($_SESSION['email']);
-    header("location: ../html/login.html");
-}
-*/
-
 try {
 
     $sql = <<<SQL
