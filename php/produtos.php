@@ -11,14 +11,16 @@ $offset = ($page - 1) * $itemsPerPage; // Cálculo do offset
 
 class Product
 {
+    public $code;
     public $name;
     public $price;
     public $date;
     public $category;
     public $imagePath;
 
-    function __construct($name, $price, $date, $category, $imagePath)
+    function __construct($code, $name, $price, $date, $category, $imagePath)
     {
+        $this->code = $code;
         $this->name = $name;
         $this->price = $price;
         $this->date = $date;
@@ -28,7 +30,7 @@ class Product
 }
 
 $sql = <<<SQL
-    SELECT anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, foto.nomeArqFoto
+    SELECT anuncio.codigo, anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, foto.nomeArqFoto
     FROM anuncio
     INNER JOIN (
         SELECT anuncio.codigo
@@ -57,7 +59,7 @@ try {
     $stmt->execute();
     $products = array();
     while ($row = $stmt->fetch()) {
-        $products[] = new Product($row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['nomeArqFoto']);
+        $products[] = new Product($row['codigo'], $row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['nomeArqFoto']);
     }
     echo json_encode($products);
 } catch (Exception $e) {

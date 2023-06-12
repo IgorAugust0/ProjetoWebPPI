@@ -17,7 +17,8 @@
         <div class="grupo">
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html" aria-label="Logo"><img src="assets/images/logo.png" width="125px" alt="logo"></a>
+                    <a href="index.html" aria-label="Logo"><img src="assets/images/logo.png" width="125px"
+                            alt="logo"></a>
                 </div>
                 <nav>
                     <ul id="MenuItems">
@@ -52,15 +53,15 @@
 
     <section id="products" class="small-grupo">
         <h2>Nossos produtos</h2>
-    
+
         <template id="template">
-          <div class="item coluna-2">
-            <img class="item-image" src="./assets/images/{{prod-image}}"></img>
-            <span class="item-name">{{prod-name}}</span>
-            <span class="item-price">{{prod-price}}</span>
-          </div>
+            <div class="item coluna-2">
+                <img class="item-image" src="./assets/images/{{prod-image}}"></img>
+                <span class="item-name">{{prod-name}}</span>
+                <span class="item-price">{{prod-price}}</span>
+            </div>
         </template>
-    
+
     </section>
 
     <!------- Depoimentos  ------>
@@ -189,20 +190,29 @@
                     .replace("{{prod-name}}", product.name)
                     .replace("{{prod-price}}", product.price);
 
-                prodsSection.insertAdjacentHTML("beforeend", html);
+                const productElement = document.createElement("div");
+                productElement.classList.add("item");
+                productElement.innerHTML = html;
+
+                // Adicione o manipulador de eventos de clique ao elemento do produto
+                productElement.addEventListener("click", function () {
+                    redirectToProductPage(product.code); // Redirecionar para a página do produto com o ID do produto
+                });
+
+                prodsSection.appendChild(productElement);
             }
         }
 
         async function loadProducts() {
 
             try {
-            let response = await fetch("./php/produtos.php?codCategoria=");
-            if (!response.ok) throw new Error(response.statusText);
-            var products = await response.json();
+                let response = await fetch("./php/produtos.php?codCategoria=");
+                if (!response.ok) throw new Error(response.statusText);
+                var products = await response.json();
             }
             catch (e) {
-            console.error(e);
-            return;
+                console.error(e);
+                return;
             }
 
             renderProducts(products);
@@ -212,8 +222,10 @@
             loadProducts();
         };
 
-
-        
+        function redirectToProductPage(productId) {
+            // Redirecionar para a página produto.php com o ID do produto
+            window.location.href = `./php/produto.php?id=${productId}`;
+        }
     </script>
 </body>
 
