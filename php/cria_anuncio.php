@@ -18,318 +18,20 @@ $email = $_SESSION['user'];
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Criar Anúncio</title>
-
+    <title>Criar Anúncio | H&I</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 100vw;
-            margin: auto;
-            background-color: plum;
-            overflow-x: hidden;
-        }
-
-        .container {
-            margin-top: 60px;
-            margin-bottom: 60px;
-        }
-
-        button {
-            margin-top: 1rem;
-        }
-
-        fieldset {
-            padding: 1rem;
-            border: 0.5 solid gray;
-            background-color: #eee;
-        }
-
-        legend {
-            background-color: #23232e;
-            color: #fff;
-            padding: 3px 8px;
-        }
-
-        header {
-            width: 100vw;
-            background: #23232e;
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem;
-        }
-
-        .logo img {
-            width: 100px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 25px;
-            color: whitesmoke;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        .nav-item a:hover {
-            cursor: pointer;
-            opacity: 0.8;
-            color: white;
-        }
-
-        .nav-list {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-list ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-
-        .nav-item {
-            margin: 0 10px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            font-size: 1.15rem;
-            color: #fff;
-            font-weight: 400;
-        }
-
-        .opcoes:link,
-        .opcoe:visited,
-        .opcoe:active {
-            text-align: center;
-            color: #555;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 1em;
-            background-color: #eee;
-            border: 0.5px solid lightgray;
-            padding: 10px;
-            margin: 5px auto;
-            width: 80%;
-        }
-
-        .opcoes:hover {
-            background-color: #dedede;
-        }
-
-        .mobile-menu-icon {
-            cursor: pointer;
-            color: whitesmoke;
-            background: transparent;
-            font-size: 30px;
-            border: none;
-            width: 37px;
-            height: 38px;
-            margin-top: 10px;
-            display: none;
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        .move {
-            display: flex;
-            justify-content: left;
-        }
-
-        footer {
-            background-color: #23232e;
-            text-align: center;
-            margin: auto;
-            padding: 5px;
-            width: 100%;
-        }
-
-        /*Responsividade para celulares*/
-        @media all AND (max-width: 600px) {
-            .logo h1 {
-                font-size: 22px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-        }
-
-        /*Responsividade para ipad*/
-        @media all AND (min-width: 700px) and (max-width: 820px) {
-            .logo h1 {
-                font-size: 30px;
-            }
-
-            .logo img {
-                width: 110px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-
-            .container {
-                height: 85vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0 auto;
-            }
-        }
-
-        /*Responsividade para Surface Pro 7*/
-        @media all AND (min-width: 912px) and (max-width: 1000px) {
-            .logo h1 {
-                font-size: 30px;
-            }
-
-            .logo img {
-                width: 110px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-
-            .container {
-                margin-top: 300px;
-                margin-bottom: 300px;
-            }
-        }
-
-        /*Responsividade para Galaxy Fold*/
-        @media all AND (max-width: 280px) {
-            .logo img {
-                width: 70px;
-            }
-
-            .logo h1 {
-                font-size: 18px;
-            }
-
-            .mobile-menu-icon {
-                width: 32px;
-                height: 32px;
-                margin-top: 5px;
-            }
-
-            .nav-bar {
-                padding: 10px;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="../assets/css/cria_anuncio.css">
 </head>
 
 <body>
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../images/logo3.png" alt="logo"></a>
-                <h1>MeuAchado.com</h1>
+                <a><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
@@ -449,51 +151,40 @@ $email = $_SESSION['user'];
             </form>
         </main>
     </div>
-    <footer>
-        <img src="../images/icones.png" alt="Icones" width="150" height="50">
-    </footer>
+    <!---- Footer ------>
+    <div class="rodape">
+        <div class="grupo">
+            <div class="linha">
+                <div class="rodape-coluna-1">
+                    <h3>Baixe nosso App</h3>
+                    <p>Disponível tanto para Android quanto para iOS</p>
+                    <div class="app-logo">
+                        <img src="../assets/images/play-store.png" alt="play-store">
+                        <img src="../assets/images/app-store.png" alt="app-store">
+                    </div>
+                </div>
+                <div class="rodape-coluna-2">
+                    <img src="../assets/images/logo-white.png" alt="logo-white">
+                    <p>Nosso propósito é oferecer a melhor experência possível a um preço justo para nossos fiés
+                        clientes </p>
+                </div>
+                <div class="rodape-coluna-3">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Nosso blog</li>
+                        <li>Política de devolução</li>
+                        <li>Seja um afiliado</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
+        </div>
+    </div>
+    <script src="../assets/js/menu-mobile.js"></script>
+    <script src="../assets/js/cria_anuncio.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-        async function fetchStates() {
-            try {
-                const response = await fetch('../assets/js/estados-cidades.json');
-                const data = await response.json();
-                const select = document.getElementById("estado");
-
-                // Popula as opções de estado
-                for (const estado of data.estados) {
-                    const option = document.createElement("option");
-                    option.value = estado.sigla;
-                    option.text = estado.nome;
-                    select.add(option);
-                }
-
-                // Manipula o evento de mudança de estado
-                select.addEventListener("change", function() {
-                    const selectedState = this.value;
-                    const citySelect = document.getElementById("cidade");
-                    const estado = data.estados.find(e => e.sigla === selectedState);
-                    const cities = estado.cidades;
-
-                    // Limpa as opções de cidade anteriores
-                    citySelect.innerHTML = "";
-
-                    // Popula as opções de cidade para o estado selecionado
-                    cities.forEach(city => {
-                        const option = document.createElement("option");
-                        option.value = city;
-                        option.text = city;
-                        citySelect.add(option);
-                    });
-                });
-            } catch (error) {
-                console.error('Error fetching state data:', error);
-            }
-        }
-
-        fetchStates();
-    </script>
-
 </body>
 
 </html>

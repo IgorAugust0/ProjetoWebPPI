@@ -14,11 +14,11 @@ $email = $_SESSION['user'];
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/css/area_anunciante.css">
-    <title>Área do Anunciate</title>
+    <title>Área do Anunciante | H&I</title>
 
 </head>
 
@@ -26,8 +26,7 @@ $email = $_SESSION['user'];
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../images/logo3.png" alt="logo"></a>
-                <h1>MeuAchado.com</h1>
+                <a><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
@@ -43,8 +42,10 @@ $email = $_SESSION['user'];
 
             <div class="move">
                 <button onclick="mostraMenu()" class="mobile-menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="mobile-menu-icon">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
+                        class="mobile-menu-icon">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
             </div>
@@ -77,20 +78,39 @@ $email = $_SESSION['user'];
 
     </main>
 
-    <footer>
-        <img src="../images/icones.png" alt="Icones" width="150" height="50">
-    </footer>
+    <!---- Footer ------>
+    <div class="rodape">
+        <div class="grupo">
+            <div class="linha">
+                <div class="rodape-coluna-1">
+                    <h3>Baixe nosso App</h3>
+                    <p>Disponível tanto para Android quanto para iOS</p>
+                    <div class="app-logo">
+                        <img src="../assets/images/play-store.png" alt="play-store">
+                        <img src="../assets/images/app-store.png" alt="app-store">
+                    </div>
+                </div>
+                <div class="rodape-coluna-2">
+                    <img src="../assets/images/logo-white.png" alt="logo-white">
+                    <p>Nosso propósito é oferecer a melhor experência possível a um preço justo para nossos fiés
+                        clientes </p>
+                </div>
+                <div class="rodape-coluna-3">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Nosso blog</li>
+                        <li>Política de devolução</li>
+                        <li>Seja um afiliado</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
+        </div>
+    </div>
 
-    <script>
-        function mostraMenu() {
-            let menuMobile = document.querySelector('.mobile-menu');
-            if (menuMobile.classList.contains('open')) {
-                menuMobile.classList.remove('open');
-            } else {
-                menuMobile.classList.add('open');
-            }
-        }
-    </script>
+    <script src="../assets/js/menu-mobile.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ class Category
 
   function __construct($name, $code)
   {
-    $this->name = $name; 
+    $this->name = $name;
     $this->code = $code;
   }
 }
@@ -22,14 +22,13 @@ $sql = <<<SQL
     SQL;
 
 try {
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $categories = array();
-    while ($row = $stmt->fetch()) {
-        $categories[] = new Category($row['nome'], $row['codigo']);
-    }
-    echo json_encode($categories);
-} 
-catch (Exception $e) {
-    exit('Ocorreu uma falha: ' . $e->getMessage());
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $categories = array();
+  while ($row = $stmt->fetch()) {
+    $categories[] = new Category($row['nome'], $row['codigo']);
+  }
+  echo json_encode($categories);
+} catch (Exception $e) {
+  exit('Ocorreu uma falha: ' . $e->getMessage());
 }

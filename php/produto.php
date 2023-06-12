@@ -42,7 +42,6 @@ try {
     }
 
     $product = new Product($row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['descricao'], $row['nomeArqFoto']);
-
 } catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
@@ -50,6 +49,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,9 +57,9 @@ try {
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
+
 <body>
     <!---------- Header ----------------->
     <div class="grupo">
@@ -90,7 +90,7 @@ try {
             <div class="coluna-2">
                 <div class="small-img-linha">
                     <div class="small-img-coluna">
-                    <img class="product-image" src="../assets/images/<?php echo $product->imagePath; ?>" alt="Product Image">
+                        <img class="product-image" src="../assets/images/<?php echo $product->imagePath; ?>" alt="Product Image">
                     </div>
                 </div>
             </div>
@@ -136,4 +136,5 @@ try {
         </div>
     </div>
 </body>
+
 </html>

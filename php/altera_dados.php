@@ -21,345 +21,30 @@ try {
 
     $stmt = $pdo->query($sql);
 } catch (Exception $e) {
-    //error_log($e->getMessage(), 3, 'log.php');
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
     <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meus Anúncios</title>
+    <title>Meus Dados | H&I</title>
 
     <!-- 2: Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/altera_dados.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 100vw;
-            margin: auto;
-            background-color: plum;
-            overflow-x: hidden;
-        }
-
-        h3 {
-            text-align: center;
-            font-size: 25px;
-        }
-
-        .container {
-            background-color: white;
-            padding: 10px;
-            border: 1px solid lightgray;
-            border-radius: 10px;
-            box-shadow: 5px 5px 5px grey;
-            margin: 70px auto;
-            width: 45vw;
-            display: flexbox;
-            overflow-x: hidden;
-        }
-
-        button {
-            margin-top: 1rem;
-        }
-
-        header {
-            width: 100vw;
-            background: #23232e;
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem;
-        }
-
-        .logo img {
-            width: 100px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 25px;
-            color: whitesmoke;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        .nav-item a:hover {
-            cursor: pointer;
-            opacity: 0.8;
-            color: white;
-        }
-
-        .nav-list {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-list ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-
-        .nav-item {
-            margin: 0 10px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            font-size: 1.15rem;
-            color: #fff;
-            font-weight: 400;
-        }
-
-        .opcoes:link,
-        .opcoe:visited,
-        .opcoe:active {
-            text-align: center;
-            color: #555;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 1em;
-            background-color: #eee;
-            border: 0.5px solid lightgray;
-            padding: 10px;
-            margin: 5px auto;
-            width: 80%;
-        }
-
-        .opcoes:hover {
-            background-color: #dedede;
-        }
-
-        .mobile-menu-icon {
-            cursor: pointer;
-            color: whitesmoke;
-            background: transparent;
-            font-size: 30px;
-            border: none;
-            width: 37px;
-            height: 38px;
-            margin-top: 10px;
-            display: none;
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        .move {
-            display: flex;
-            justify-content: left;
-        }
-
-        footer {
-            background-color: #23232e;
-            text-align: center;
-            margin: auto;
-            padding: 5px;
-            width: 100%;
-        }
-
-        /*Responsividade para celulares*/
-        @media all AND (max-width: 600px) {
-            .logo h1 {
-                font-size: 22px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-
-            .container {
-                width: 70vw;
-                overflow-x: hidden;
-            }
-        }
-
-        /*Responsividade para ipad*/
-        @media all AND (min-width: 700px) and (max-width: 820px) {
-            .logo h1 {
-                font-size: 30px;
-            }
-
-            .logo img {
-                width: 110px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-
-            .container {
-                width: 70vw;
-                margin: 130px auto;
-            }
-        }
-
-        /*Responsividade para Surface Pro 7*/
-        @media all AND (min-width: 912px) and (max-width: 1000px) {
-            .logo h1 {
-                font-size: 30px;
-            }
-
-            .logo img {
-                width: 110px;
-            }
-
-            .nav-bar {
-                padding: 1.5rem;
-            }
-
-            .nav-item {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 1rem;
-            }
-
-            .mobile-menu .nav-item {
-                display: block;
-                padding-top: 1.2rem;
-            }
-
-            .mobile-menu {
-                width: 100%;
-            }
-
-            .open {
-                display: block;
-            }
-
-            .container {
-                width: 70vw;
-                overflow-x: hidden;
-                margin: 222px auto;
-            }
-        }
-
-        /*Responsividade para Galaxy Fold*/
-        @media all AND (max-width: 280px) {
-            .logo img {
-                width: 70px;
-            }
-
-            .logo h1 {
-                font-size: 18px;
-            }
-
-            .mobile-menu-icon {
-                width: 32px;
-                height: 32px;
-                margin-top: 5px;
-            }
-
-            .nav-bar {
-                padding: 10px;
-            }
-        }
-
-        .password-wrapper {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            background-color: transparent;
-            border: none;
-            color: #007bff;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../images/logo3.png" alt="logo"></a>
-                <h1>MeuAchado.com</h1>
+                <a><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
@@ -454,38 +139,40 @@ try {
         ?>
     </div>
 
-    <footer>
-        <img src="../images/icones.png" alt="Icones" width="150" height="50">
-    </footer>
+    <!---- Footer ------>
+    <div class="rodape">
+        <div class="grupo">
+            <div class="linha">
+                <div class="rodape-coluna-1">
+                    <h3>Baixe nosso App</h3>
+                    <p>Disponível tanto para Android quanto para iOS</p>
+                    <div class="app-logo">
+                        <img src="../assets/images/play-store.png" alt="play-store">
+                        <img src="../assets/images/app-store.png" alt="app-store">
+                    </div>
+                </div>
+                <div class="rodape-coluna-2">
+                    <img src="../assets/images/logo-white.png" alt="logo-white">
+                    <p>Nosso propósito é oferecer a melhor experência possível a um preço justo para nossos fiés
+                        clientes </p>
+                </div>
+                <div class="rodape-coluna-3">
+                    <h3>Links úteis</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Nosso blog</li>
+                        <li>Política de devolução</li>
+                        <li>Seja um afiliado</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
+        </div>
+    </div>
 
-    <script>
-        // script para mostrar/esconder o menu mobile
-        function mostraMenu() {
-            let menuMobile = document.querySelector('.mobile-menu');
-            if (menuMobile.classList.contains('open')) {
-                menuMobile.classList.remove('open');
-            } else {
-                menuMobile.classList.add('open');
-            }
-        }
-    </script>
-
-
-    <script>
-        // script para mostrar/esconder a senha
-        function togglePasswordVisibility() {
-            const passwordInput = document.querySelector(".password-wrapper input");
-            const passwordToggle = document.querySelector(".password-wrapper .password-toggle");
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                passwordToggle.textContent = "Esconder";
-            } else {
-                passwordInput.type = "password";
-                passwordToggle.textContent = "Mostrar";
-            }
-        }
-    </script>
+    <script src="../assets/js/menu-mobile.js"></script>
+    <script src="../assets/js/altera_dados.js"></script>
 
 </body>
 
