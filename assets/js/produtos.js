@@ -32,6 +32,12 @@ async function renderProducts(newProducts) {
       productElement.querySelector(".item-name").textContent = product.name;
       productElement.querySelector(".item-price").textContent = product.price;
 
+      productElement
+        .querySelector(".item")
+        .addEventListener("click", function () {
+          redirectToProductPage(product.code); // Redirecionar para a página do produto com o ID do produto
+        });
+
       prodsSection.appendChild(productElement);
     })
   );
@@ -136,9 +142,19 @@ async function renderProductsInfinity(newProducts) {
       productElement.querySelector(".item-name").textContent = product.name;
       productElement.querySelector(".item-price").textContent = product.price;
 
+      productElement
+        .querySelector(".item")
+        .addEventListener("click", function () {
+          redirectToProductPage(product.code); // Redirecionar para a página do produto com o ID do produto
+        });
+
       prodsSection.appendChild(productElement);
     })
   );
+}
+function redirectToProductPage(productId) {
+  // Redirecionar para a página produto.php com o ID do produto
+  window.location.href = `../php/produto.php?id=${productId}`;
 }
 
 // var MenuItems = document.getElementById("MenuItems");
