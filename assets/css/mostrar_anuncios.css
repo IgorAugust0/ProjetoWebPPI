@@ -293,7 +293,7 @@ ul {
 
   .container {
     height: 85vh;
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
