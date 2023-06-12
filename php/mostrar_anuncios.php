@@ -37,7 +37,6 @@ try {
     <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meus Anúncios | H&I</title>
-
     <!-- 2: Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/mostrar_anuncios.css">
@@ -50,10 +49,11 @@ try {
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../assets/images/logo.png" alt="logo"></a>
+                <a href="../index.html"><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                     <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
@@ -75,6 +75,7 @@ try {
         </nav>
         <div class="mobile-menu">
             <ul>
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
@@ -115,7 +116,7 @@ try {
           <tr>
           <td>
               <a href="exclui_anuncio.php?codigo=$codigo">
-                <img src="../assets/images/delete.png" width="15" height="15">
+                <img src="../assets/images/delete.png" width="20" height="20">
               </a>
             </td> 
             <td>$titulo</td>

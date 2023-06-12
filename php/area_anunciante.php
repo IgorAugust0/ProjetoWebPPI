@@ -26,11 +26,11 @@ $email = $_SESSION['user'];
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../assets/images/logo.png" alt="logo"></a>
+                <a href="../index.html"><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                     <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
@@ -42,10 +42,8 @@ $email = $_SESSION['user'];
 
             <div class="move">
                 <button onclick="mostraMenu()" class="mobile-menu-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
-                        class="mobile-menu-icon">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="mobile-menu-icon">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </button>
             </div>
@@ -53,7 +51,7 @@ $email = $_SESSION['user'];
         </nav>
         <div class="mobile-menu">
             <ul>
-                <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
                 <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
@@ -66,7 +64,7 @@ $email = $_SESSION['user'];
 
     <main>
         <div class=container2>
-            <h2>Seja bem-vindo(a) a Área do Anunciante!</h2>
+            <h2>Bem-vindo(a) à Área do Anunciante!</h2>
             <p>Escolha uma das opções abaixo para começar:</p>
             <div>
                 <a href="cria_anuncio.php" class="opcoes">Criar Anúncio</a>

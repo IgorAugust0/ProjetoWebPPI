@@ -31,10 +31,11 @@ $email = $_SESSION['user'];
     <header>
         <nav class="nav-bar">
             <div class="logo">
-                <a><img src="../assets/images/logo.png" alt="logo"></a>
+                <a href="../index.html"><img src="../assets/images/logo.png" alt="logo"></a>
             </div>
             <div class="nav-list">
                 <ul>
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                     <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
@@ -56,6 +57,7 @@ $email = $_SESSION['user'];
         </nav>
         <div class="mobile-menu">
             <ul>
+                <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
                 <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>

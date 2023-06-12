@@ -48,7 +48,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -62,26 +62,19 @@ try {
 
 <body>
     <!---------- Header ----------------->
-    <div class="grupo">
-        <div class="navbar">
-            <div class="logo">
-                <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="125px" alt="logo"></a>
-            </div>
-            <nav>
-                <ul id="MenuItems">
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="../pages/produtos.html">Produtos</a></li>
-                    <!-- <li><a href="sobre.html">Sobre</a></li>
-                        <li><a href="contato.html">Contato</a></li> -->
-                    <li><a href="../pages/conta.html">Conta</a></li>
-                    <!--<li>
-                            <a href="pages/carrinho.html"><img src="assets/images/carrinho.png" width="30px" height="30px"
-                                                               alt="carrinho"></a>
-                            <img src="assets/images/menu.png" class="menu-icon" onclick="menutoggle()" alt="menu">
-                        </li>-->
-                </ul>
-            </nav>
+    <div class="navbar">
+        <div class="logo">
+            <a href="../index.html" aria-label="Logo"><img src="../assets/images/logo.png" width="200px" alt="logo"></a>
         </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="conta.html">Conta</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="grupo">
     </div>
     <!-------- Detalhes de único produto -------->
 
