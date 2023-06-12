@@ -59,6 +59,9 @@ try {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
+<style>
+
+</style>
 
 <body>
     <!---------- Header ----------------->
@@ -69,7 +72,7 @@ try {
         <nav>
             <ul id="MenuItems">
                 <li><a href="../index.html">Início</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="../pages/produtos.html">Produtos</a></li>
                 <li><a href="conta.html">Conta</a></li>
             </ul>
         </nav>
@@ -89,10 +92,23 @@ try {
             </div>
             <div class="coluna-2">
                 <h1><?php echo $product->name; ?></h1>
-                <h4><?php echo $product->price; ?></h4>
+                <h4>R$<?php echo $product->price; ?>,00</h4>
                 <h3>Descrição <i class="fa fa-indent"></i></h3>
                 <br>
                 <p><?php echo $product->description; ?></p>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contato:</label>
+                        <input type="text" id="contact" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

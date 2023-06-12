@@ -441,12 +441,6 @@ input:focus {
   cursor: pointer;
 }
 
-.item-image {
-  width: 150px;
-  height: 150px;
-  margin: 0 2rem;
-}
-
 .item {
   background-color: white;
   padding: 1rem;

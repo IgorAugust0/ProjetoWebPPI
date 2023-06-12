@@ -87,7 +87,7 @@ try {
 
     <main>
         <div class="container">
-            <h3>Minhas mensagens de interesse</h3>
+            <h3>Mensagens de interesse</h3>
             <table class="table table-striped table-hover">
                 <tr>
                     <th></th>

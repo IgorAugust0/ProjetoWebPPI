@@ -16,21 +16,23 @@ class Product
     public $price;
     public $date;
     public $category;
+    public $description;
     public $imagePath;
 
-    function __construct($code, $name, $price, $date, $category, $imagePath)
+    function __construct($code, $name, $price, $date, $category, $description, $imagePath)
     {
         $this->code = $code;
         $this->name = $name;
         $this->price = $price;
         $this->date = $date;
         $this->category = $category;
+        $this->description = $description;
         $this->imagePath = $imagePath;
     }
 }
 
 $sql = <<<SQL
-    SELECT anuncio.codigo, anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, foto.nomeArqFoto
+    SELECT anuncio.codigo, anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, anuncio.descricao, foto.nomeArqFoto
     FROM anuncio
     INNER JOIN (
         SELECT anuncio.codigo
@@ -59,7 +61,7 @@ try {
     $stmt->execute();
     $products = array();
     while ($row = $stmt->fetch()) {
-        $products[] = new Product($row['codigo'], $row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['nomeArqFoto']);
+        $products[] = new Product($row['codigo'], $row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['descricao'], $row['nomeArqFoto']);
     }
     echo json_encode($products);
 } catch (Exception $e) {
