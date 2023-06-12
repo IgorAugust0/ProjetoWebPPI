@@ -12,14 +12,19 @@ if (!isset($_SESSION['loggedIn'])) {
 }
 
 try {
-
     $sql = <<<SQL
-  SELECT nome,cpf,hash_senha,telefone
-  FROM anunciante
-  WHERE anunciante.email = '$email'
-  SQL;
+    SELECT anuncio.codigo, anuncio.titulo, categoria.nome, anuncio.preco, anuncio.dataHora, anuncio.descricao, foto.nomeArqFoto,
+    interesse.codigo AS codInteresse, interesse.mensagem, interesse.dataHora AS dataHoraInteresse, interesse.contato
+    FROM anuncio
+    INNER JOIN anunciante ON anunciante.email = :email
+    INNER JOIN foto ON foto.codAnuncio = anuncio.codigo
+    INNER JOIN categoria ON categoria.codigo = anuncio.codCategoria
+    LEFT JOIN interesse ON interesse.codAnuncio = anuncio.codigo
+    WHERE anuncio.codAnunciante = anunciante.codigo AND interesse.codigo IS NOT NULL
+    SQL;
 
-    $stmt = $pdo->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':email' => $email]);
 } catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
@@ -30,18 +35,17 @@ try {
 
 <head>
     <meta charset="utf-8">
-    <!-- 1: Tag de responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meus Dados | H&I</title>
-
-    <!-- 2: Bootstrap CSS -->
+    <title>Mensagens de interesse | H&I</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/altera_dados.css">
+    <link rel="stylesheet" href="../assets/css/mostrar_anuncios.css">
+    <style>
 
+    </style>
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="nav-bar">
             <div class="logo">
                 <a href="../index.html"><img src="../assets/images/logo.png" alt="logo"></a>
@@ -71,10 +75,9 @@ try {
         <div class="mobile-menu">
             <ul>
                 <li class="nav-item"><a href="../index.html" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                 <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                 <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                <li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>
+                <li class="nav-item"><a href="interesse.php" class="nav-link">Mensagens</a></li>
                 <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                 <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
                 <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
@@ -82,64 +85,62 @@ try {
         </div>
     </header>
 
+    <main>
+        <div class="container">
+            <h3>Minhas mensagens de interesse</h3>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th></th>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Data da Publicação</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                    <th>Foto</th>
+                    <th>Mensagem</th>
+                    <th>Data/Hora</th>
+                    <th>Contato</th>
+                </tr>
 
-    <div class="container">
-        <h3>Alterar Dados</h3>
-        <hr>
-        <form action="formAltera.php" method="post">
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" name="nome" class="form-control" id="nome" required>
-                </div>
+                <?php
+                while ($row = $stmt->fetch()) {
 
-                <div class="col-sm-6">
-                    <label class="form-label">CPF</label>
-                    <input type="text" name="cpf" class="form-control" id="cpf" required>
-                </div>
+                    $codigo = $row['codigo'];
+                    $titulo = htmlspecialchars($row['titulo']);
+                    $categoria = htmlspecialchars($row['nome']);
+                    $dataHora = htmlspecialchars($row['dataHora']);
+                    $preco = htmlspecialchars($row['preco']);
+                    $descricao = htmlspecialchars($row['descricao']);
+                    $nomeArqFoto = htmlspecialchars($row['nomeArqFoto']);
+                    $codInteresse = htmlspecialchars($row['codInteresse']);
+                    $mensagem = htmlspecialchars($row['mensagem']);
+                    $dataHoraInteresse = htmlspecialchars($row['dataHoraInteresse']);
+                    $contato = htmlspecialchars($row['contato']);
 
-                <div class="col-sm-6">
-                    <label class="form-label">Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" id="telefone" required>
-                </div>
+                    echo <<<HTML
+                        <tr>
+                            <td>
+                                <a href="exclui_anuncio.php?codigo=$codigo">
+                                    <img src="../assets/images/delete.png" width="20" height="20">
+                                </a>
+                            </td> 
+                            <td>$titulo</td>
+                            <td>$categoria</td>
+                            <td>$dataHora</td> 
+                            <td>$preco</td>
+                            <td>$descricao</td>
+                            <td>$nomeArqFoto</td>
+                            <td>$mensagem</td>
+                            <td>$dataHoraInteresse</td>
+                            <td>$contato</td>
+                        </tr>      
+                    HTML;
+                }
+                ?>
 
-                <div class="col-sm-6">
-                    <label class="form-label">Senha</label>
-                    <input type="password" name="senha" class="form-control" id="senha" required>
-                </div>
-
-                <div class="col-12">
-                    <button type="submit" class="btn btn-secondary">Enviar</button>
-                </div>
-            </div>
-        </form>
-        <hr>
-        <h3>Meus Dados</h3>
-        <hr>
-
-        <?php
-        while ($row = $stmt->fetch()) {
-
-            $nome = $row['nome'];
-            $cpf = htmlspecialchars($row['cpf']);
-            $telefone = htmlspecialchars($row['telefone']);
-            $senha = htmlspecialchars($row['hash_senha']);
-            $email = $_SESSION['user'];
-
-            echo <<<HTML
-    <strong>Nome: </strong><p>$nome</p>
-    <strong>CPF: </strong><p>$cpf</p>
-    <strong>Telefone: </strong><p>$telefone</p> 
-    <strong>Email: </strong><p>$email</p>
-    <strong>Senha: </strong>
-    <div class="password-wrapper">
-      <input type="password" value="$senha" readonly>
-      <button type="button" class="password-toggle" onclick="togglePasswordVisibility()">Mostrar</button>
-    </div>
-  HTML;
-        }
-        ?>
-    </div>
+            </table>
+        </div>
+    </main>
 
     <!---- Footer ------>
     <div class="rodape">
@@ -174,8 +175,6 @@ try {
     </div>
 
     <script src="../assets/js/menu-mobile.js"></script>
-    <script src="../assets/js/altera_dados.js"></script>
-
 </body>
 
 </html>

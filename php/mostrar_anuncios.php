@@ -57,7 +57,7 @@ try {
                     <li class="nav-item"><a href="area_anunciante.php" class="nav-link">Área do Anunciante</a></li>
                     <li class="nav-item"><a href="cria_anuncio.php" class="nav-link">Criar Anúncio</a></li>
                     <li class="nav-item"><a href="mostrar_anuncios.php" class="nav-link">Meus Anúncios</a></li>
-                    <!--<li class="nav-item"><a href="mensagens.php" class="nav-link">Mensagens</a></li>-->
+                    <li class="nav-item"><a href="interesse.php" class="nav-link">Mensagens</a></li>
                     <li class="nav-item"><a href="altera_dados.php" class="nav-link">Meus Dados</a></li>
                     <!--<li class="nav-item"><a href="area_anunciante.php?sair=true" class="nav-link"> Sair</a></li>-->
                     <li class="nav-item"><a href="logout.php" class="nav-link"> Sair</a></li>
