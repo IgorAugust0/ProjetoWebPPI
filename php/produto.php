@@ -6,6 +6,7 @@ $productId = $_GET['id'] ?? '';
 
 class Product
 {
+    public $id;
     public $name;
     public $price;
     public $date;
@@ -13,8 +14,9 @@ class Product
     public $description;
     public $imagePath;
 
-    function __construct($name, $price, $date, $category, $description, $imagePath)
+    function __construct($id, $name, $price, $date, $category, $description, $imagePath)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->price = $price;
         $this->date = $date;
@@ -24,8 +26,9 @@ class Product
     }
 }
 
+
 $sql = <<<SQL
-    SELECT anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, anuncio.descricao, foto.nomeArqFoto
+    SELECT anuncio.codigo, anuncio.titulo, anuncio.preco, anuncio.dataHora, anuncio.codCategoria, anuncio.descricao, foto.nomeArqFoto
     FROM anuncio
     INNER JOIN foto ON anuncio.codigo = foto.codAnuncio
     WHERE anuncio.codigo = :id
@@ -41,7 +44,7 @@ try {
         exit('Produto não encontrado');
     }
 
-    $product = new Product($row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['descricao'], $row['nomeArqFoto']);
+    $product = new Product($row['codigo'], $row['titulo'], $row['preco'], $row['dataHora'], $row['codCategoria'], $row['descricao'], $row['nomeArqFoto']);
 } catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
@@ -96,17 +99,20 @@ try {
                 <h3>Descrição <i class="fa fa-indent"></i></h3>
                 <br>
                 <p><?php echo $product->description; ?></p>
-                <form action="" method="post">
+                <form action="usuarioInteresse.php" method="post">
                     <div class="form-group">
                         <label for="mensagem">Mensagem:</label>
                         <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="contact">Contato:</label>
-                        <input type="text" id="contact" name="contact" required>
+                        <input type="text" id="contato" name="contato" required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <input type="number" id="codAnuncio" name="codAnuncio">
                     </div>
                     <div class="form-group">
-                        <button type="submit">Enviar</button>
+                        <button id="btnForm" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
@@ -144,6 +150,16 @@ try {
             <p class="copyright">&copy; Copyright 2023 - H&I Inc.</p>
         </div>
     </div>
+
+    <script>
+
+        window.onload = function() {
+            const codAnuncio = document.querySelector("#codAnuncio");
+            codAnuncio.value = "<?php echo $product->id; ?>";
+            console.log(codAnuncio.value);
+        }
+
+    </script>
 </body>
 
 </html>
