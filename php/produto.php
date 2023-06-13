@@ -106,7 +106,7 @@ try {
             <ul id="MenuItems">
                 <li><a href="../index.html">Início</a></li>
                 <li><a href="../pages/produtos.html">Produtos</a></li>
-                <li><a href="../pages/conta.html">Conta</a></li>
+                <li><a href="area_anunciante.php">Conta</a></li>
             </ul>
         </nav>
     </div>
