@@ -26,7 +26,7 @@ if (isset($_POST['titulo'])) {
     for ($i = 0; $i < count($_FILES['foto']['name']); $i++) {
 
       $nomeArqFoto = $_FILES['foto']['name'][$i];
-      move_uploaded_file($_FILES['foto']['tmp_name'][$i], '../images/' . $nomeArqFoto);
+      move_uploaded_file($_FILES['foto']['tmp_name'][$i], '../assets/images/' . $nomeArqFoto);
 
       //salvando nomes para enviar para o banco
       array_push($fotos, $nomeArqFoto);
