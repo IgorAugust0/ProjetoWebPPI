@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início | H&I</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/produtos.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -43,21 +44,22 @@
 
     <!-- Aqui sera usado para colocar os anuncios dos produtos -->
 
-    <section id="products" class="small-grupo">
-        <h2>Nossos produtos</h2>
+    <div id="products" class="small-grupo linha">
+        <h2>Últimos Anúncios</h2>
 
         <template id="template">
             <div class="item coluna-2">
                 <img class="item-image" src="./assets/images/{{prod-image}}"></img>
                 <span class="item-name">{{prod-name}}</span>
                 <span class="item-price">{{prod-price}}</span>
+                <span class="item-description">{{prod-description}}</span>
             </div>
         </template>
 
-    </section>
+    </div>
 
     <!------- Depoimentos  ------>
-    <div class="depoimento">
+    <div class="depoimento" hidden>
         <div class="small-grupo">
             <div class="linha">
                 <div class="coluna-3">

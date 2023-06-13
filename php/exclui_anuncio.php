@@ -1,6 +1,13 @@
 <?php
+session_start();
+
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
+
+if (!isset($_SESSION['loggedIn'])) {
+  header("location: ../pages/conta.html");
+  exit();
+}
 
 $codigo = $_GET["codigo"] ?? "";
 

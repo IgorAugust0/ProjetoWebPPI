@@ -71,6 +71,7 @@ $email = $_SESSION['user'];
                 <a href="mostrar_anuncios.php" class="opcoes">Meus Anúncios</a>
                 <!--<a href="mensagens.php" class="opcoes">Mensagens</a>-->
                 <a href="altera_dados.php" class="opcoes">Meus Dados</a>
+                <a href="interesse.php" class="opcoes">Interesse</a>
             </div>
         </div>
 

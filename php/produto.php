@@ -1,4 +1,5 @@
 <?php
+
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
 
@@ -61,6 +62,35 @@ try {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <style>
 
@@ -76,7 +106,7 @@ try {
             <ul id="MenuItems">
                 <li><a href="../index.html">Início</a></li>
                 <li><a href="../pages/produtos.html">Produtos</a></li>
-                <li><a href="conta.html">Conta</a></li>
+                <li><a href="../pages/conta.html">Conta</a></li>
             </ul>
         </nav>
     </div>
@@ -99,7 +129,7 @@ try {
                 <h3>Descrição <i class="fa fa-indent"></i></h3>
                 <br>
                 <p><?php echo $product->description; ?></p>
-                <form action="usuarioInteresse.php" method="post">
+                <form id="formularioInteresse" action="usuarioInteresse.php" method="post">
                     <div class="form-group">
                         <label for="mensagem">Mensagem:</label>
                         <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
@@ -114,6 +144,7 @@ try {
                     <div class="form-group">
                         <button id="btnForm" type="submit">Enviar</button>
                     </div>
+                </form>
                 </form>
             </div>
         </div>
@@ -152,13 +183,39 @@ try {
     </div>
 
     <script>
+        const codAnuncio = document.querySelector("#codAnuncio");
+        const formularioInteresse = document.getElementById('formularioInteresse');
+        const mensagemInput = document.getElementById('mensagem');
+        const contatoInput = document.getElementById('contato');
 
-        window.onload = function() {
-            const codAnuncio = document.querySelector("#codAnuncio");
-            codAnuncio.value = "<?php echo $product->id; ?>";
-            console.log(codAnuncio.value);
-        }
+        codAnuncio.value = "<?php echo $product->id; ?>";
 
+        formularioInteresse.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Impedir o comportamento padrão de envio
+
+            // Obter os dados do formulário
+            const formData = new FormData(this);
+
+            try {
+                // Enviar os dados do formulário via Fetch API
+                const response = await fetch('usuarioInteresse.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('Mensagem enviada com sucesso!');
+                    // Limpar os campos do formulário
+                    mensagemInput.value = '';
+                    contatoInput.value = '';
+                } else {
+                    alert('Falha ao enviar a mensagem. Por favor, tente novamente.');
+                }
+            } catch (error) {
+                console.error('Ocorreu um erro:', error);
+                alert('Ocorreu um erro ao processar a solicitação. Por favor, tente novamente mais tarde.');
+            }
+        });
     </script>
 </body>
 

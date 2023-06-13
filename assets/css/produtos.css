@@ -7,7 +7,7 @@
 
 /* Global styles */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, , sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333;
@@ -109,19 +109,29 @@ ul {
 }
 
 .item-name {
-  font: 1em Verdana;
-  color: #888;
+  font-weight: bold;
+  font: 1em ;
+  color: #333;
   margin-top: 0.5rem;
+  display: block;
 }
 
 .item-price {
-  font: 1em Verdana;
+  font: 1em ;
   color: darkgreen;
   margin-top: 0.5rem;
+  display: block;
 }
 
 .item-price::before {
   content: "R$ ";
+}
+
+.item-description {
+  font: 1em ;
+  color: #888;
+  margin-top: 0.5rem;
+  display: block;
 }
 
 /* Footer styles */

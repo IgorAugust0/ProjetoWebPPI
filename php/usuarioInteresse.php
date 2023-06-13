@@ -1,7 +1,15 @@
 <?php
+session_start();
 
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
+
+if (!isset($_SESSION['loggedIn'])) {
+    header("location: ../pages/conta.html");
+    exit();
+}
+
+$email = $_SESSION['user'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensagem = $_POST["mensagem"];
@@ -13,7 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Preparar a declaração SQL
-        $sql = "INSERT INTO interesse (mensagem, dataHora, contato, codAnuncio) VALUES (?, ?, ?, ?)";
+        $sql = <<<SQL
+        INSERT INTO interesse (mensagem, dataHora, contato, codAnuncio)
+        VALUES (?, ?, ?, ?)
+        SQL;
+
         $stmt = $pdo->prepare($sql);
 
         // Executar a declaração SQL com os valores fornecidos
@@ -22,15 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar se a inserção foi bem-sucedida
         if ($stmt->rowCount() > 0) {
             // Inserção bem-sucedida
-            echo "Mensagem enviada com sucesso!";
+            header("HTTP/1.1 200 OK");
+            exit();
         } else {
             // Inserção falhou
-            echo "Falha ao enviar a mensagem. Por favor, tente novamente.";
+            header("HTTP/1.1 500 Internal Server Error");
+            exit();
         }
     } catch (Exception $e) {
         // Erro ao executar a declaração SQL
-        exit("Ocorreu uma falha: " . $e->getMessage());
+        header("HTTP/1.1 500 Internal Server Error");
+        exit();
     }
 }
-?>
-?>

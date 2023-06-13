@@ -16,10 +16,10 @@ function renderProducts(newProducts) {
     let html = template.innerHTML
       .replace("{{prod-image}}", product.imagePath)
       .replace("{{prod-name}}", product.name)
+      .replace("{{prod-description}}", product.description)
       .replace("{{prod-price}}", product.price);
 
     const productElement = document.createElement("div");
-    productElement.classList.add("item");
     productElement.innerHTML = html;
 
     // Adicione o manipulador de eventos de clique ao elemento do produto

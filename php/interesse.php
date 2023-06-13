@@ -118,23 +118,23 @@ try {
                     $contato = htmlspecialchars($row['contato']);
 
                     echo <<<HTML
-                        <tr>
-                            <td>
-                                <a href="exclui_anuncio.php?codigo=$codigo">
-                                    <img src="../assets/images/delete.png" width="20" height="20">
-                                </a>
-                            </td> 
-                            <td>$titulo</td>
-                            <td>$categoria</td>
-                            <td>$dataHora</td> 
-                            <td>$preco</td>
-                            <td>$descricao</td>
-                            <td>$nomeArqFoto</td>
-                            <td>$mensagem</td>
-                            <td>$dataHoraInteresse</td>
-                            <td>$contato</td>
-                        </tr>      
-                    HTML;
+                    <tr>
+                        <td>
+                            <a href="exclui_mensagem.php?id=$codInteresse">
+                                <img src="../assets/images/delete.png" width="20" height="20">
+                            </a>
+                        </td> 
+                        <td>$titulo</td>
+                        <td>$categoria</td>
+                        <td>$dataHora</td> 
+                        <td>$preco</td>
+                        <td>$descricao</td>
+                        <td>$nomeArqFoto</td>
+                        <td>$mensagem</td>
+                        <td>$dataHoraInteresse</td>
+                        <td>$contato</td>
+                    </tr>      
+                HTML;
                 }
                 ?>
 
